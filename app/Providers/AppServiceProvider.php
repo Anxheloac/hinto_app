@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Services\DataApiInterface;
+use App\Services\JsonPlaceholderDataApi;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +15,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        /**
+         * In case we use a different provider from JsonPlaceholder
+         * bind the API class in this interface so you don't have to change
+         * the other part of code
+         * //IMPORTANT MAKE SURE THAT API CLASS IMPLEMENTS THIS INTERFACE
+         *
+         */
+        $this->app->bind(DataApiInterface::class, function ($app) {
+            return new JsonPlaceholderDataApi();
+        });
     }
 
     /**
