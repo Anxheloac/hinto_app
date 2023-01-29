@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Services\DataApiInterface;
+use App\Services\EmailServiceInterface;
 use App\Services\JsonPlaceholderDataApi;
+use App\Services\MailtrapService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,6 +26,10 @@ class AppServiceProvider extends ServiceProvider
          */
         $this->app->bind(DataApiInterface::class, function ($app) {
             return new JsonPlaceholderDataApi();
+        });
+
+        $this->app->bind(EmailServiceInterface::class, function ($app) {
+            return new MailtrapService();
         });
     }
 

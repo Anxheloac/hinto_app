@@ -115,4 +115,7 @@ return [
         ],
     ],
 
+    'posts_mail' => [
+        'reciever' => 'anxhelo@test.com'
+    ]
 ];
