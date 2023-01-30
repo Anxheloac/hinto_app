@@ -18,4 +18,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/mails/trigger', \App\Http\Controllers\Api\MailSend::class);
+Route::post('/mails/trigger', \App\Http\Controllers\Api\MailSend::class)
+    ->name('api.mail.post');
